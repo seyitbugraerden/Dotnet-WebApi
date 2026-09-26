@@ -1,0 +1,25 @@
+# .NET build output
+**/[Bb]in/
+**/[Oo]bj/
+TestResults/
+*.user
+*.suo
+.vs/
+
+# Frontend dependencies
+node_modules/
+
+# Local configuration and databases
+.env
+.env.*
+!.env.example
+appsettings.Local.json
+*.db
+*.db-shm
+*.db-wal
+shopDb
+shopDb-shm
+shopDb-wal
+
+# macOS
+.DS_Store
