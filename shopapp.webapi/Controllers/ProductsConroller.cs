@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using shopapp.business.Abstract;
+using shopapp.entity;
 
 namespace shopapp.webapi.Controllers
 {
@@ -30,6 +27,12 @@ namespace shopapp.webapi.Controllers
             if (product == null)
                 return NotFound();
             return Ok(product);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(Product entity)
+        {
+            await _productService.CreateAsync(entity);
+            return CreatedAtAction(nameof(GetProduct), new { id = entity.ProductId }, entity);
         }
     }
 }

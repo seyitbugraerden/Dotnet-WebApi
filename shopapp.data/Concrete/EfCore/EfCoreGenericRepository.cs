@@ -18,6 +18,10 @@ namespace shopapp.data.Concrete.EfCore
         {
             context.Set<TEntity>().Add(entity);
         }
+        public async Task CreateAsync(TEntity entity)
+        {
+            await context.Set<TEntity>().AddAsync(entity);
+        }
 
         public void Delete(TEntity entity)
         {

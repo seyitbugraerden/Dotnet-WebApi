@@ -8,18 +8,26 @@ namespace shopapp.business.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-         private readonly IUnitOfWork _unitofwork;
+        private readonly IUnitOfWork _unitofwork;
         public CategoryManager(IUnitOfWork unitofwork)
         {
             _unitofwork = unitofwork;
         }
 
         public string ErrorMessage { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        string IValidator<Category>.ErrorMessage { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         public void Create(Category entity)
         {
             _unitofwork.Categories.Create(entity);
             _unitofwork.Save();
+        }
+
+        public async Task<Category> CreateAsync(Category entity)
+        {
+            await _unitofwork.Categories.CreateAsync(entity);
+            await _unitofwork.SaveAsync();
+            return entity;
         }
 
         public void Delete(Category entity)
@@ -30,7 +38,7 @@ namespace shopapp.business.Concrete
 
         public void DeleteFromCategory(int productId, int categoryId)
         {
-            _unitofwork.Categories.DeleteFromCategory(productId,categoryId);
+            _unitofwork.Categories.DeleteFromCategory(productId, categoryId);
         }
 
         public async Task<List<Category>> GetAll()
@@ -40,7 +48,7 @@ namespace shopapp.business.Concrete
 
         public async Task<Category> GetById(int id)
         {
-           return await _unitofwork.Categories.GetById(id);
+            return await _unitofwork.Categories.GetById(id);
         }
 
         public Category GetByIdWithProducts(int categoryId)

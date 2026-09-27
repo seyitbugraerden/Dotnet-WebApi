@@ -16,6 +16,7 @@ namespace shopapp.business.Abstract
         List<Product> GetSearchResult(string searchString);
         Task<List<Product>> GetAll();
         bool Create(Product entity);
+        Task<Product> CreateAsync(Product entity);
         void Update(Product entity);
         void Delete(Product entity);
         bool Update(Product entity, int[] categoryIds);

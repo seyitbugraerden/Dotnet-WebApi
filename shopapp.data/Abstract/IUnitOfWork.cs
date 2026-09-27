@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 
 namespace shopapp.data.Abstract
 {
@@ -9,6 +10,7 @@ namespace shopapp.data.Abstract
          IOrderRepository Orders {get;}
          IProductRepository Products {get;} 
          void Save();
+         Task<int> SaveAsync();
 
     }
 }

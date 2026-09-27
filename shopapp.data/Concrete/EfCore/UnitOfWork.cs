@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using shopapp.data.Abstract;
 
 namespace shopapp.data.Concrete.EfCore
@@ -35,6 +36,10 @@ namespace shopapp.data.Concrete.EfCore
         public void Save()
         {
             _context.SaveChanges();
+        }
+        public async Task<int> SaveAsync()
+        {
+            return await _context.SaveChangesAsync();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace shopapp.business.Abstract
         Task<List<Category>> GetAll();
 
         void Create(Category entity);
+        Task<Category> CreateAsync(Category entity);
 
         void Update(Category entity);
         void Delete(Category entity);
