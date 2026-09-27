@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using shopapp.business.Abstract;
 
@@ -11,12 +12,12 @@ namespace shopapp.webui.ViewComponents
         {
             this._categoryService=categoryService;
         }
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             if (RouteData.Values["category"]!=null)
                 ViewBag.SelectedCategory = RouteData?.Values["category"];
                 
-            return View(_categoryService.GetAll());
+            return View(await _categoryService.GetAll());
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using shopapp.data.Abstract;
+using System.Threading.Tasks;
 
 namespace shopapp.data.Concrete.EfCore
 {

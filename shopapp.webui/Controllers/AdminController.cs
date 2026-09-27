@@ -274,7 +274,7 @@ namespace shopapp.webui.Controllers
             }
             return View(model);
         }
-        public IActionResult ProductEdit(int? id)
+        public async Task<IActionResult> ProductEdit(int? id)
         {
             if(id==null)
             {
@@ -301,7 +301,7 @@ namespace shopapp.webui.Controllers
                 SelectedCategories = entity.ProductCategories.Select(i=>i.Category).ToList()
             };
 
-            ViewBag.Categories = _categoryService.GetAll();
+            ViewBag.Categories = await _categoryService.GetAll();
 
             return View(model);
         }
@@ -353,7 +353,7 @@ namespace shopapp.webui.Controllers
                         AlertType="danger"
                     }); 
             }
-            ViewBag.Categories = _categoryService.GetAll();
+            ViewBag.Categories = await _categoryService.GetAll();
             return View(model);
         }
         public IActionResult CategoryEdit(int? id)
