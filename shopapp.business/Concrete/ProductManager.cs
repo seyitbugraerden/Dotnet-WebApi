@@ -124,5 +124,23 @@ namespace shopapp.business.Concrete
 
             return isValid;
         }
+
+        public async Task UpdateAsync(Product entityToUdate, Product entity)
+        {
+            entityToUdate.Name = entity.Name;
+            entityToUdate.Price = entity.Price;
+            entityToUdate.Description = entity.Description;
+            entityToUdate.ImageUrl = entity.ImageUrl;
+            entityToUdate.IsApproved = entity.IsApproved;
+            entityToUdate.IsHome = entity.IsHome;
+            entityToUdate.Url = entity.Url;
+            _unitofwork.Products.Update(entityToUdate);
+            await _unitofwork.SaveAsync();
+        }
+
+        public Task updateAsync(Product entityToUdate, Product entity)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
