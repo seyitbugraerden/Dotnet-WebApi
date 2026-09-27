@@ -29,9 +29,9 @@ namespace shopapp.data.Concrete.EfCore
             return await context.Set<TEntity>().ToListAsync();
         }
 
-        public TEntity GetById(int id)
+        public async Task<TEntity> GetById(int id)
         {
-            return context.Set<TEntity>().Find(id);
+            return await context.Set<TEntity>().FindAsync(id);
         }
 
         public virtual void Update(TEntity entity)

@@ -6,7 +6,7 @@ namespace shopapp.business.Abstract
 {
     public interface ICategoryService: IValidator<Category>
     {
-        Category GetById(int id);
+        Task<Category> GetById(int id);
 
         Category GetByIdWithProducts(int categoryId);
 

@@ -5,7 +5,7 @@ namespace shopapp.data.Abstract
 {
     public interface IRepository<T>
     {
-        T GetById(int id);
+        Task<T> GetById(int id);
 
         Task<List<T>> GetAll();
 
