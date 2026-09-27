@@ -6,7 +6,7 @@ namespace shopapp.data.Abstract
     {
         T GetById(int id);
 
-        List<T> GetAll();
+        Task<List<T>> GetAll();
 
         void Create(T entity);
 

@@ -9,7 +9,7 @@ namespace shopapp.business.Abstract
 
         Category GetByIdWithProducts(int categoryId);
 
-        List<Category> GetAll();
+        Task<List<Category>> GetAll();
 
         void Create(Category entity);
 

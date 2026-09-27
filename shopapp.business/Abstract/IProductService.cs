@@ -13,7 +13,7 @@ namespace shopapp.business.Abstract
         
         List<Product> GetHomePageProducts();
         List<Product> GetSearchResult(string searchString);
-        List<Product> GetAll();
+        Task<List<Product>> GetAll();
         bool Create(Product entity);
         void Update(Product entity);
         void Delete(Product entity);

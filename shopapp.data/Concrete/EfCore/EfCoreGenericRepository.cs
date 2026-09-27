@@ -23,9 +23,9 @@ namespace shopapp.data.Concrete.EfCore
             context.Set<TEntity>().Remove(entity);
         }
 
-        public List<TEntity> GetAll()
+        public async Task<List<TEntity>> GetAll()
         {
-            return context.Set<TEntity>().ToList();
+            return await context.Set<TEntity>().ToListAsync();
         }
 
         public TEntity GetById(int id)

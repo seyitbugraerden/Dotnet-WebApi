@@ -189,18 +189,20 @@ namespace shopapp.webui.Controllers
         }
         
         
-        public IActionResult ProductList()
+        public async Task<IActionResult> ProductList()
         {
+            var products = await _productService.GetAll();
             return View(new ProductListViewModel()
             {
-                Products = _productService.GetAll()
+                Products = products
             });
         }
-        public IActionResult CategoryList()
+        public async Task<IActionResult> CategoryList()
         {
+            var categories = await _categoryService.GetAll();
             return View(new CategoryListViewModel()
             {
-                Categories = _categoryService.GetAll()
+                Categories = categories
             });
         }
         public IActionResult ProductCreate()

@@ -34,7 +34,7 @@ namespace shopapp.webui
             // services.AddDbContext<ApplicationContext>(options=> options.UseSqlite(_configuration.GetConnectionString("SqliteConnection")));
             // services.AddDbContext<ShopContext>(options=> options.UseSqlite(_configuration.GetConnectionString("SqliteConnection")));
 
-             services.AddDbContext<ApplicationContext>(options=> options.UseSqlServer(_configuration.GetConnectionString("MsSqlConnection")));
+            services.AddDbContext<ApplicationContext>(options=> options.UseSqlServer(_configuration.GetConnectionString("MsSqlConnection")));
             services.AddDbContext<ShopContext>(options=> options.UseSqlServer(_configuration.GetConnectionString("MsSqlConnection")));
             
             services.AddIdentity<User,IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
