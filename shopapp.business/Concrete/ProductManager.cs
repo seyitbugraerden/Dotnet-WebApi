@@ -40,6 +40,12 @@ namespace shopapp.business.Concrete
             _unitofwork.Products.Delete(entity);
             _unitofwork.Save();
         }
+        public async Task DeleteAsync(Product entity)
+        {
+            // iş kuralları
+            _unitofwork.Products.Delete(entity);
+            await _unitofwork.SaveAsync();
+        }
 
         public async Task<List<Product>> GetAll()
         {
