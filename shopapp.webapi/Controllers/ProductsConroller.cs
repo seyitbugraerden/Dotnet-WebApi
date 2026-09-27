@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using shopapp.business.Abstract;
 using shopapp.entity;
+using shopapp.webapi.DTO;
 
 namespace shopapp.webapi.Controllers
 {
@@ -18,15 +20,37 @@ namespace shopapp.webapi.Controllers
         public async Task<IActionResult> GetProducts()
         {
             var products = await _productService.GetAll();
-            return Ok(products);
+            var productsDTO = new List<ProductDTO>();
+            foreach (var product in products)
+            {
+                productsDTO.Add(new ProductDTO
+                {
+                    ProductId = product.ProductId,
+                    Name = product.Name,
+                    Url = product.Url,
+                    Price = product.Price,
+                    Description = product.Description,
+                    ImageUrl = product.ImageUrl
+                });
+            }
+            return Ok(productsDTO);
         }
         [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var product = _productService.GetById(id);
+            var productDTO = new ProductDTO
+            {
+                ProductId = product.Result.ProductId,
+                Name = product.Result.Name,
+                Url = product.Result.Url,
+                Price = product.Result.Price,
+                Description = product.Result.Description,
+                ImageUrl = product.Result.ImageUrl
+            };
             if (product == null)
                 return NotFound();
-            return Ok(product);
+            return Ok(productDTO);
         }
         [HttpPost]
         public async Task<IActionResult> CreateProduct(Product entity)
