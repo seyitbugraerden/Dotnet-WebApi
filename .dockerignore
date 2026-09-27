@@ -1,0 +1,9 @@
+**/bin
+**/obj
+.git
+.vercel
+.env*
+**/appsettings.Local.json
+**/node_modules
+**/*.db
+**/shopDb

@@ -23,3 +23,5 @@ shopDb-wal
 
 # macOS
 .DS_Store
+.vercel
+.env*

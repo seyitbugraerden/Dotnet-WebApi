@@ -36,20 +36,20 @@ namespace shopapp.webapi.Controllers
             return Ok(productsDTO);
         }
         [HttpGet("{id}")]
-        public IActionResult GetProduct(int id)
+        public async Task<IActionResult> GetProduct(int id)
         {
-            var product = _productService.GetById(id);
-            var productDTO = new ProductDTO
-            {
-                ProductId = product.Result.ProductId,
-                Name = product.Result.Name,
-                Url = product.Result.Url,
-                Price = product.Result.Price,
-                Description = product.Result.Description,
-                ImageUrl = product.Result.ImageUrl
-            };
+            var product = await _productService.GetById(id);
             if (product == null)
                 return NotFound();
+            var productDTO = new ProductDTO
+            {
+                ProductId = product.ProductId,
+                Name = product.Name,
+                Url = product.Url,
+                Price = product.Price,
+                Description = product.Description,
+                ImageUrl = product.ImageUrl
+            };
             return Ok(productDTO);
         }
         [HttpPost]

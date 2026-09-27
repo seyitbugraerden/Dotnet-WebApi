@@ -1,0 +1,10 @@
+.git
+.env*
+**/bin
+**/obj
+**/node_modules
+**/appsettings.Local.json
+**/*.db
+**/shopDb
+shopapp.webui
+.vscode
